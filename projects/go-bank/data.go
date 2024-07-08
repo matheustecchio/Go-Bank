@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -11,10 +10,10 @@ import (
 func createFile(file string, initialValue string) error {
 	if _, err := os.ReadFile(file); err != nil {
 		if _, err := os.Create(file); err != nil {
-			return errors.New("failed to create the file")
+			return err
 		}
 		if err := os.WriteFile(file, []byte(initialValue), 0644); err != nil {
-			return errors.New("failed to initiate value in file")
+			return err
 		}
 	}
 
@@ -25,13 +24,13 @@ func createFile(file string, initialValue string) error {
 func getFileData(file string) (float64, error) {
 	fileByte, err := os.ReadFile(file)
 	if err != nil {
-		return 0, errors.New("file doesn't exist or cannot be read")
+		return 0, err
 	}
 
 	byteToString := string(fileByte)
 	dataToBeSaved, err := strconv.ParseFloat(byteToString, 64)
 	if err != nil {
-		return 0, errors.New("failed to convert balance data from file to float64")
+		return 0, err
 	}
 
 	return dataToBeSaved, nil
@@ -41,7 +40,7 @@ func getFileData(file string) (float64, error) {
 func saveDataToFile(file string, targetFloat float64) error {
 	floatToString := fmt.Sprint(targetFloat)
 	if err := os.WriteFile(file, []byte(floatToString), 0644); err != nil {
-		return errors.New("failed to write file")
+		return err
 	}
 
 	return nil
