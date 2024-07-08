@@ -1,11 +1,9 @@
-# Project Name
+# Learn Go
 
-Go Bank is a simple command-line banking application written in Go. This project demonstrates basic file I/O operations, user interaction through a menu-driven interface, and fundamental financial transactions such as checking balance, depositing, and withdrawing money.
-
+This project serves as a practical example of basic Go programming concepts, making it an excellent starting point for beginners.
 
 > Note: This is an educational project, with studies purposes and not more than that.
 
-This project serves as a practical example of basic Go programming concepts, including file operations, error handling, and user input processing, making it an excellent starting point for beginners.
 
 ## 💻 Requirements
 
@@ -18,19 +16,15 @@ The following requirements must be met to use this project:
 To install this project, follow these instructions:
 
 ```bash
-git clone github.com/matheustecchio/Go-Bank
-cd Go-Bank/
+git clone github.com/matheustecchio/learn-go
+cd learn-go/
 ```
 
 ## 🖱 How to use
 
-To use this project, follow this commands in your terminal:
+Select the project that you want to run and open it in your terminal with `cd projects/<project_folder>/`. Than run the command `./main`.
 
-```bash
-./main
-```
-
-The main menu will be displayed, and users can interact with it to perform various banking operations. The balance will be saved and restored between sessions.
+In case it doesn't run, you can run with the Go runtime(should've Go installed) using `go run .`
 
 ---
 
@@ -44,7 +38,7 @@ For a detailed list of contributors, please see [ACKNOWLEDGMENTS.md](./docs/ACKN
 
 This project is licensed under the [Unlicense License](./docs/LICENSE).
 
-By using this project, you agree to adhere to the terms and conditions of the license.
+By using this project, you agree to follow and respect the terms and conditions of the license.
 
 ---
 
