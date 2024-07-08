@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func displayMenu() {
+func displayMenu() error {
 	fmt.Println("\nWelcome to the Go Bank!")
 	fmt.Println("What do you want to do?")
 	fmt.Println("1. Check balance")
@@ -17,7 +17,7 @@ func displayMenu() {
 	fmt.Print("Enter with you option: ")
 
 	if _, err := fmt.Scan(&choice); err != nil {
-		log.Panic("Error while computing menu's choice")
+		return err
 	}
 
 	switch choice {
@@ -30,6 +30,8 @@ func displayMenu() {
 	case 0:
 		os.Exit(0)
 	}
+
+	return nil
 
 }
 

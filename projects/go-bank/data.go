@@ -1,39 +1,48 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"log"
 	"os"
 	"strconv"
 )
 
-// If a file doesn't exist, it creates the file with the designated name and format, and insert the value 0.
-func createFile(fileName string) {
-	_, err := os.ReadFile(fileName)
-	if err != nil {
-		os.Create(fileName)
-		os.WriteFile(fileName, []byte("0"), 0644)
+// If a file doesn't exist, it creates the file with the designated name and format, and insert `initialValue` in it.
+func createFile(file string, initialValue string) error {
+	if _, err := os.ReadFile(file); err != nil {
+		if _, err := os.Create(file); err != nil {
+			return errors.New("failed to create the file")
+		}
+		if err := os.WriteFile(file, []byte(initialValue), 0644); err != nil {
+			return errors.New("failed to initiate value in file")
+		}
 	}
+
+	return nil
 }
 
-// Synchronizes the file data to a variable in our code.
-func syncData(fileName string) float64 {
-	fileByte, err := os.ReadFile(fileName)
+// Return a value from the file. Used to save the value in the file to a variable in the code.
+func getFileData(file string) (float64, error) {
+	fileByte, err := os.ReadFile(file)
 	if err != nil {
-		log.Fatalf("File '%s' doesn't exist or cannot be read: %v", fileName, err)
+		return 0, errors.New("file doesn't exist or cannot be read")
 	}
 
 	byteToString := string(fileByte)
 	dataToBeSaved, err := strconv.ParseFloat(byteToString, 64)
 	if err != nil {
-		log.Fatalf("Failed to convert balance data from file '%s' to float64: %v", fileName, err)
+		return 0, errors.New("failed to convert balance data from file to float64")
 	}
 
-	return dataToBeSaved
+	return dataToBeSaved, nil
 }
 
 // Save data to a file.
-func saveDataToFile(fileName string, targetFloat float64) {
+func saveDataToFile(file string, targetFloat float64) error {
 	floatToString := fmt.Sprint(targetFloat)
-	os.WriteFile(fileName, []byte(floatToString), 0644)
+	if err := os.WriteFile(file, []byte(floatToString), 0644); err != nil {
+		return errors.New("failed to write file")
+	}
+
+	return nil
 }

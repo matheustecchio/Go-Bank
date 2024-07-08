@@ -1,14 +1,29 @@
 package main
 
+import (
+	"log"
+)
+
 var balance float64
 
 func main() {
-	createFile("balance.txt")
-	balance = syncData("balance.txt")
+	if err := createFile("balance.txt", "0"); err != nil {
+		log.Fatal(err)
+	}
+
+	balance, err := getFileData("balance.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	for {
-		displayMenu()
-		saveDataToFile("balance.txt", balance)
+		if err := displayMenu(); err != nil {
+			log.Fatal(err)
+		}
+
+		if err := saveDataToFile("balance.txt", balance); err != nil {
+			log.Fatal(err)
+		}
 	}
 
 }
