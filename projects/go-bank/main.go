@@ -4,6 +4,7 @@ import (
 	"log"
 )
 
+// balance is a global variable that holds the current balance.
 var balance float64
 
 func main() {
@@ -25,5 +26,4 @@ func main() {
 			log.Fatal(err)
 		}
 	}
-
 }
