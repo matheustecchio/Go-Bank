@@ -12,7 +12,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	balance, err := getFileData("balance.txt")
+	balance, err := getFloatFromFile("balance.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -22,7 +22,7 @@ func main() {
 			log.Fatal(err)
 		}
 
-		if err := saveDataToFile("balance.txt", balance); err != nil {
+		if err := writeFloatToFile("balance.txt", balance); err != nil {
 			log.Fatal(err)
 		}
 	}

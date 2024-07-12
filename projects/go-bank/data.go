@@ -24,33 +24,33 @@ func createFile(file string, initialValue string) error {
 	return nil
 }
 
-// getFileData reads a file and returns its content as a float64 value.
+// getFloatFromFile reads a file and returns its content as a float64 value.
 //
 // `file`: The name of the file to be read.
 //
 // Returns the content of the file as a float64 value and an error if any operation fails.
-func getFileData(file string) (float64, error) {
-	fileByte, err := os.ReadFile(file)
+func getFloatFromFile(file string) (float64, error) {
+	dataByte, err := os.ReadFile(file)
 	if err != nil {
 		return 0, err
 	}
 
-	byteToString := string(fileByte)
-	dataToBeSaved, err := strconv.ParseFloat(byteToString, 64)
+	dataString := string(dataByte)
+	dataFloat, err := strconv.ParseFloat(dataString, 64)
 	if err != nil {
 		return 0, err
 	}
 
-	return dataToBeSaved, nil
+	return dataFloat, nil
 }
 
-// saveDataToFile writes a float64 value to a file.
+// writeFloatToFile writes a float64 value to a file.
 //
 // `file`: The name of the file to be written to.
 // `targetFloat`: The float64 value to be written into the file.
-func saveDataToFile(file string, targetFloat float64) error {
-	floatToString := fmt.Sprint(targetFloat)
-	if err := os.WriteFile(file, []byte(floatToString), 0644); err != nil {
+func writeFloatToFile(file string, target float64) error {
+	targetString := fmt.Sprint(target)
+	if err := os.WriteFile(file, []byte(targetString), 0644); err != nil {
 		return err
 	}
 
