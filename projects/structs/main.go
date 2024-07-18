@@ -34,4 +34,9 @@ func main() {
 
 	appUser.OutputUserDetails()
 	appUser.ClearUserName()
+
+	appAdmin := user.NewAdmin("admin@example.com", "adminadmin")
+
+	appAdmin.User.OutputUserDetails()
+	appAdmin.User.ClearUserName()
 }

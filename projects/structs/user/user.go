@@ -40,3 +40,22 @@ func New(firstName, lastName, birthDate string) (*User, error) {
 	}, nil
 
 }
+
+type Admin struct {
+	Email    string
+	Password string
+	User     User
+}
+
+func NewAdmin(email string, password string) *Admin {
+	return &Admin{
+		Email:    email,
+		Password: password,
+		User: User{
+			FirstName: "ADMIN",
+			LastName:  "ADMIN",
+			BirthDate: "01/01/01",
+			CreatedAt: time.Now(),
+		},
+	}
+}
