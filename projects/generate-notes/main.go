@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"example.com/note"
+	"example.com/todo"
 )
 
 func getUserInput(promptText string) string {
@@ -33,8 +34,31 @@ func getNoteData() (string, string) {
 	return title, description
 }
 
+func getTodoData() string {
+	description := getUserInput("Enter the text of your note: ")
+
+	return description
+}
+
+type Saver interface {
+	Save() error
+}
+
+func saveData(data Saver) error {
+	err := data.Save()
+
+	if err != nil {
+		fmt.Println("Saving failed.")
+		return err
+	}
+
+	fmt.Println("Saving succeeded!")
+	return nil
+}
+
 func main() {
 	title, content := getNoteData()
+	text := getTodoData()
 
 	userNote, err := note.New(title, content)
 	if err != nil {
@@ -42,9 +66,14 @@ func main() {
 	}
 
 	userNote.DisplayNote()
-	err = userNote.Save()
+	saveData(userNote)
+
+	userTodo, err := todo.New(text)
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	userTodo.DisplayTodo()
+	saveData(userTodo)
 
 }
