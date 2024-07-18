@@ -1,6 +1,6 @@
 # Acknowledgments
 
-This project is a product of collaboration with several talented individuals. We would like to thank to everyone who has contributed.
+This project is a product of collaboration with talented individuals. We would like to thank to everyone who has contributed.
 
 ## Contributors
 - **[Matheus Tecchio](@matheustecchio):** Code Owner and Admin.
