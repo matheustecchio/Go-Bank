@@ -28,7 +28,7 @@ func New(title, description string) (Note, error) {
 	}, nil
 }
 
-func (n Note) DisplayNote() {
+func (n Note) Display() {
 	fmt.Printf("Note Title: %s\nNote Description:%s\n", n.Title, n.Description)
 }
 

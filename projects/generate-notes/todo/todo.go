@@ -22,7 +22,7 @@ func New(text string) (Todo, error) {
 	}, nil
 }
 
-func (todo Todo) DisplayTodo() {
+func (todo Todo) Display() {
 	fmt.Printf("Todo: %s\n", todo.Text)
 }
 
