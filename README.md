@@ -30,7 +30,7 @@ In case it doesn't run, you can run with the Go runtime(should've Go installed) 
 
 ## 🫂 Acknowledgment
 
-This project is a product of collaboration with several talented individuals. We would like to thank to everyone who has contributed.
+This project was possible thanks to the efforts of many talented people. We appreciate everyone who played a part in its creation.
 
 For a detailed list of contributors, please see [ACKNOWLEDGMENTS.md](./docs/ACKNOWLEDGMENTS.md).
 
