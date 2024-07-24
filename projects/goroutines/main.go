@@ -30,7 +30,7 @@ func main() {
 	go slowGreet("How ... are ... you ...?", dones[2])
 
 	dones[3] = make(chan bool)
-	go greet("I hope you're liking the course!", dones[3])
+	go greet("I hope you're well!", dones[3])
 
 	for _, done := range dones {
 		<-done
